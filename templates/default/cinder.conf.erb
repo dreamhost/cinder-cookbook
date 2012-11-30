@@ -325,6 +325,11 @@ db_backend=sqlalchemy
 
 ######## defined in cinder.openstack.common.notifier.api ########
 
+<%- if node["openstack"]["folsom"]["send_notification_messages"] %>
+notification_driver=cinder.openstack.common.notifier.rabbit_notifier
+<%- else %>
+notification_driver=cinder.openstack.common.notifier.no_op_notifier
+<%- end %>
 #### (MultiStrOpt) Driver or drivers to handle sending notifications
 
 # default_notification_level=INFO
